@@ -1,0 +1,82 @@
+-----| WhiteSpace_Testing |-----------------------
+# pass
+
+-----| Module_Testing |-----------------------
+# pass
+
+-----| Arithmetic_Testing |-----------------------
+# pass
+
+-----| Function_Testing |-----------------------
+# pass
+
+-----| Functional_Testing |-----------------------
+# pass
+
+-----| String_Testing |-----------------------
+# pass
+
+-----| Exception_Testing |-----------------------
+# pass
+
+-----| List_Testing |-----------------------
+# pass
+
+-----| List_testing |-----------------------
+# pass
+
+-----| Tuple_Testing |-----------------------
+# pass
+
+-----| Dictionary_Tetsing |-----------------------
+# pass
+
+-----| DefaultDictionaries_Testing |-----------------------
+# pass
+
+-----| Counters_Testing |-----------------------
+# pass
+
+-----| Set_Testing |-----------------------
+# pass
+
+-----| ControlFlow_Testing |-----------------------
+# pass
+
+-----| Truthiness_Testing |-----------------------
+# pass
+
+-----| Sorting_Testing |-----------------------
+# pass
+
+-----| ListComprehension_Testing |-----------------------
+# pass
+
+-----| GeneratorsIterators_Testing |-----------------------
+# pass
+
+-----| Randomness_Testing |-----------------------
+# pass
+
+-----| RegularExpressions_Testing |-----------------------
+# pass
+
+-----| ObjectOriented_Testing |-----------------------
+# pass
+
+-----| FunctionalTools_Testing |-----------------------
+# pass
+
+-----| Enumerate_Testing |-----------------------
+# pass
+
+-----| ZipArgumentUnpacking_Testing |-----------------------
+# pass
+
+-----| Args_Testing |-----------------------
+# pass
+
+-----| Kargs_Testing |-----------------------
+# pass
+
+# pass= 27 fail= 0 %pass = 100%
