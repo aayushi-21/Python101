@@ -4,7 +4,6 @@ import re, traceback
 
 class O():
     y = n = 0
-
     @staticmethod
     def report():
         print("\n# pass= %s fail= %s %%pass = %s%%" % (
@@ -69,9 +68,9 @@ class Sym:
             self._ent = self._ent - p * math.log(p, 2)
         return self._ent
 
+#Testing 
 
 @O.k
-
 def baseSym():
     s = Sym()
     s = s.syms(['y', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'n', 'n', 'n', 'n', 'n'])
