@@ -74,3 +74,4 @@ def sampleTest():
 
     for t in s:
         print(t.max, t.nth(0.5))
+        assert abs(t.nth(0.5) - 0.5) < 0.2
