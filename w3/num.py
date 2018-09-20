@@ -90,3 +90,4 @@ def numOkay():
                  525, 583, 780, 1000])
         print(n.mu)
         print(round(n.sd, 3))
+        assert n.mu == 270.3 and round(n.sd, 3) == 231.946
