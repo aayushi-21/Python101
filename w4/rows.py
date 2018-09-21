@@ -32,7 +32,13 @@ class data:
         self.w = {}
         self.syms = {}
         self.nums = {}
+        self.Class=None
         self.rows = {}
         self.name = {}
         self._use = {}
 
+    def indep(self,c):
+        return not self.w[c] and self.Class!=c
+
+    def dep(self,c):
+        return not self.indep(c)
