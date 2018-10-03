@@ -54,6 +54,7 @@ class Data:
                 else:
                     self.syms[c].symInc(x)
             self.rows[r].append(x)
+        return self
 
 
 def rows1(src):
