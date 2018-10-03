@@ -29,7 +29,7 @@ class O():
 
 def cp(i, l, u):
     if i in range(l, u):
-        return input
+        return i
     elif i >= u:
         return u
     elif i <= l:
@@ -67,8 +67,8 @@ def doms(data):
             row2 = another(r1, data.rows)
             s = dom(data, row1, row2) and 1 / n or 0
             row1[c] += s
-    new_header = ' '.join(new_header)
-    print(new_header)
+    title = ' '.join(title)
+    print(title)
     all_rows = data.rows
     for s in all_rows:
         print(*s)
