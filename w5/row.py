@@ -41,6 +41,7 @@ class Data:
                     self._class = c
                 else:
                     self.indeps.append(c)
+        return self
 
     def row(self, cells):
         r = len(self.rows)
@@ -80,6 +81,7 @@ def rows1(src):
         a = [k+1,data.name[k],v.n,v.mu,v.sd]
         result.append(a)
     print(tabulate(result, headers=['Name', 'n', 'mu', 'sd']))
+    return data
 
 
 def lines(src=None):
@@ -96,5 +98,4 @@ def lines(src=None):
 
 
 def rows(s):
-    rows1(lines(s))
-
+    return rows1(lines(s))
