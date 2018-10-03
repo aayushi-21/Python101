@@ -57,7 +57,7 @@ def dom(data, row1, row2):
     return s1 / n < s2 / n
 
 
-def doms(data):
+def doms(data,count):
     n = samples
     c = len(data.name)
     title = data.name + ['>dom']
@@ -67,20 +67,39 @@ def doms(data):
             row2 = another(r1, data.rows)
             s = dom(data, row1, row2) and 1 / n or 0
             row1[c] += s
-    title = ' '.join(title)
-    print(title)
-    all_rows = data.rows
-    for s in all_rows:
-        print(*s)
+    if(count==1):
+        new_header = ' '.join(new_header)
+        print(new_header)
+        df_all = data.rows
+        for s in df_all:
+            print(*s)
+    else:
+        output = sorted(data.rows, key=lambda x: x[-1])
+        print("First Ten rows")
+        #Printing first 10 rows
+        new_header = ' '.join(new_header)
+        print(new_header)
+        count = 0
+        for s in output:
+            count += 1
+            if(count<=10):
+                print(*s)
+        #Printing Last ten rows
+        print("\n\nLast Ten rows")
+        print(new_header)
+        allrows = [row for row in output]
+        count = len(output)
+        for i in range(count-10,count):
+            print(*allrows[i])
 
-def mainDom(source):
+def mainDom(source,count):
     print(source)
-    doms(rows(source))
+    doms(rows(source),count)
 
 @O.k
 def domTest1():
-        mainDom("Weather.csv")
+        mainDom("Weather.csv",1)
         
 @O.k
 def domTest2():
-        mainDom("auto.csv")
+        mainDom("auto.csv",2)
