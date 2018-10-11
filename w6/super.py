@@ -1,7 +1,8 @@
 from row import rows
 from num import Num
 import traceback,re
-
+from dom import doms
+import math
 class O():
     y = n = 0
 
@@ -26,7 +27,11 @@ class O():
 
 def super(data):
     rows = data.rows
-    enough = len(rows) ** 0.55
+    goal = len(rows[1]) -1
+    enough = len(rows) ** 0.5
+    most = 0
+    cut_var_n = []
+    col_split_val = []
 
     def band(c, lo, hi):
         if lo == 0:
@@ -37,34 +42,43 @@ def super(data):
             return str(rows[lo][c]) + ".." + str(rows[hi][c])
 
     def argmin(c, lo, hi):
+        mu = 0
         cut = None
-        if (hi - lo > 2 * enough):
-            l, r = Num(), Num()
-            for i in range(lo, hi + 1): r.numInc(rows[i][c])
-            best = r.sd
-            for i in range(lo, hi + 1):
-                x = rows[i][c]
-                l.numInc(x)
-                r.numDec(x)
-                if l.n >= enough and r.n >= enough:
-                    tmp = Num.numXpect(l, r) * 1.04
-                    if tmp < best:
-                        cut, best = i, tmp
-        return cut
+        xl, xr = Num(), Num()
+        yl, yr = Num(), Num()
+        for i in range(lo,hi+1):
+            xr.numInc(rows[i][c])
+            yr.numInc(rows[i][goal])
+        bestx = xr.sd
+        besty = yr.sd
+        mu = yr.mu
 
+        for i in range(lo, hi + 1):
+            x = rows[i][c]
+            y = rows[i][goal]
+            xl.numInc(x)
+            xr.numDec(x)
+            yl.numInc(y)
+            yr.numDec(y)
+            if xl.n >= enough and xr.n >= enough:
+                tmpx = Num.numXpect(xl, xr) * 1.0
+                tmpy = Num.numXpect(yl, yr) * 1.0
+                if tmpx < bestx and tmpy < besty:
+                    (cut, bestx, besty) = i, tmpx, tmpy
+        return cut,mu
 
     def cuts(c, lo, hi, pre):
         txt = pre + str(rows[lo][c]) + ".. " + str(rows[hi][c])
-        cut = argmin(c, lo, hi)
+        cut,mu = argmin(c, lo, hi)
         if cut:
             print(txt)
             cuts(c, lo, cut, pre + "|.. ")
             cuts(c, cut + 1, hi, pre + "|.. ")
         else:
-            b = band(c, lo, hi)
-            print(txt + " (" + b + ")")
+            s = band(c, lo, hi)
+            print(txt + " (" + math.floor(100*mu) + ")")
             for r in range(lo, hi + 1):
-                rows[r][c] = b
+                rows[r][c] = s
 
 
     def stop(c, t):
@@ -85,6 +99,10 @@ def super(data):
     for s in rows:
         print(*s)
 
+def mainsuper(s):
+    print("WeatherLong.csv")
+    super(rows(s))
 
-def mainsuper(source):
-    super(rows(source))
+@O.k
+def testsuper():
+    mainsuper("Weather.csv")
